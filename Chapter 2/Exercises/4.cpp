@@ -8,6 +8,7 @@ int main()
 	std::cout << "Enter the length of the square's sides ('q' to quit): ";
 
 	unsigned int input;
+
 	while (std::cin >> input)
 	{
 		std::cout << std::endl;
