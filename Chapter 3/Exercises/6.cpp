@@ -2,17 +2,19 @@
 #include <algorithm>
 #include <string>
 #include <cctype>
-
+#include <ctime>
 
 const int CIPHER_SIZE = 26;
 
-const char cipherArray[CIPHER_SIZE]{ 'P', 'H', 'Q', 'G', 'I', 'U', 'M', 'E',
-									 'A', 'Y', 'L', 'N', 'O', 'F', 'D', 'X',
-									 'J', 'K', 'R', 'C', 'V', 'S', 'T', 'Z',
-									 'W', 'B' };
-
 int main()
 {
+	srand(static_cast<int>(time(0)));
+
+	char cipherArray[CIPHER_SIZE]{ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+								   'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+								   'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+								   'Y', 'Z' };
+
 	std::cout << "Enter plaintext to encrypt it: ";
 
 	char inputChar;
@@ -20,6 +22,8 @@ int main()
 
 	std::string originalInput = "";
 	std::string encryptedText = "";
+
+	std::random_shuffle(&cipherArray[0], &cipherArray[CIPHER_SIZE]);
 
 	std::cout << "Your encrypted text: ";
 
