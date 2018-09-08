@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 const int ARRAY_SIZE = 10;
 
@@ -14,7 +15,7 @@ int SortByGrade(const void* voidA, const void* voidB)
 	student * studentA = (student*)(voidA);
 	student * studentB = (student*)(voidB);
 
-	return studentB->grade - studentA->grade;
+	return studentA->grade - studentB->grade;
 }
 
 int main()
@@ -34,38 +35,35 @@ int main()
 
 	qsort(studentArray, ARRAY_SIZE, sizeof(student), SortByGrade);
 
-	int upperQuartile, middleQuartile, lowerQuartile;
+	std::cout << "ID\tGrade\tName" << std::endl;
+	std::cout << "========================" << std::endl;
+	for (int i = 0; i < ARRAY_SIZE; i++)
+		std::cout << studentArray[i].studentID << "\t" << studentArray[i].grade << "\t" << studentArray[i].name << std::endl;
 
-	// Finding the middle quartile
+	float first, second, third;
+
+	// First quartile
+	if (ARRAY_SIZE * 0.25 == static_cast<int>(ARRAY_SIZE * 0.25))
+		first = (studentArray[static_cast<int>((ARRAY_SIZE * 0.25) - 1)].grade + studentArray[static_cast<int>(ARRAY_SIZE * 0.75)].grade) / 2;
+	else
+		first = studentArray[static_cast<int>(ceil((ARRAY_SIZE * 0.25) - 1))].grade;
+
+	// Second quartile
 	if (ARRAY_SIZE % 2 == 0)
-		middleQuartile = (studentArray[ARRAY_SIZE / 2].grade + studentArray[(ARRAY_SIZE / 2) + 1].grade) / 2;
+		second = (studentArray[(ARRAY_SIZE / 2) - 1].grade + studentArray[(ARRAY_SIZE / 2)].grade) / 2.0f;
 	else
-		middleQuartile = studentArray[ARRAY_SIZE / 2 + 1].grade;
+		second = studentArray[ARRAY_SIZE / 2].grade;
 
-	// Calculating the upper quartile
-	upperQuartile = (ARRAY_SIZE + middleQuartile) / 2;
-
-	int count = 0;
-
-	while (studentArray[count].grade > middleQuartile)
-	{
-		// TODO: Do this right
-		count++;
-	}
-
-
-
-	if ((count + 1) % 2 == 0)
-		upperQuartile;
+	// Third quartile
+	if (ARRAY_SIZE * 0.75 == static_cast<int>(ARRAY_SIZE * 0.75))
+		third = (studentArray[static_cast<int>((ARRAY_SIZE * 0.75) - 1)].grade + studentArray[static_cast<int>(ARRAY_SIZE * 0.75)].grade) / 2;
 	else
-		upperQuartile;
+		third = studentArray[static_cast<int>(ceil((ARRAY_SIZE * 0.75) - 1))].grade;
 
-	// Calculating the lower quartile
-	lowerQuartile = (ARRAY_SIZE - middleQuartile) / 2;
-
-	std::cout << "U: " << upperQuartile << std::endl;
-	std::cout << "M: " << middleQuartile << std::endl;
-	std::cout << "L: " << lowerQuartile << std::endl;
+	std::cout << "\nTo score as well or better than 25% of the students, you would need a grade of " << first << "." << std::endl;
+	std::cout << "To score as well or better than 50% of the students, you would need a grade of " << second << "." << std::endl;
+	std::cout << "To score as well or better than 75% of the students, you would need a grade of " << third << "." << std::endl;
+	
 
 	std::cin.get();
 
