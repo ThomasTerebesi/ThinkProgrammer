@@ -18,8 +18,5 @@
     <ClCompile Include="Exercises\1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Problems\problem1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
