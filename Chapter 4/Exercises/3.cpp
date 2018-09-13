@@ -21,16 +21,16 @@ void Append(arrayString & s, char c)
 {
 	int oldLength = Length(s);
 
-	arrayString newS = new char[oldLength + 2];
+	arrayString newString = new char[oldLength + 2];
 
 	for (int i = 0; i < oldLength; i++)
-		newS[i] = s[i];
+		newString[i] = s[i];
 
-	newS[oldLength] = c;
-	newS[oldLength + 1] = 0;
+	newString[oldLength] = c;
+	newString[oldLength + 1] = 0;
 
 	delete[] s;
-	s = newS;
+	s = newString;
 }
 
 void Concatenate(arrayString & s1, arrayString s2)
@@ -38,18 +38,18 @@ void Concatenate(arrayString & s1, arrayString s2)
 	int oldLength1 = Length(s1);
 	int oldLength2 = Length(s2);
 
-	arrayString newS = new char[oldLength1 + oldLength2 + 1];
+	arrayString newString = new char[oldLength1 + oldLength2 + 1];
 
 	for (int i = 0; i < oldLength1; i++)
-		newS[i] = s1[i];
+		newString[i] = s1[i];
 
 	for (int i = 0; i < oldLength2; i++)
-		newS[i + oldLength1] = s2[i];
+		newString[i + oldLength1] = s2[i];
 
-	newS[oldLength1 + oldLength2] = 0;
+	newString[oldLength1 + oldLength2] = 0;
 
 	delete[] s1;
-	s1 = newS;
+	s1 = newString;
 }
 
 arrayString Substring(const arrayString & s, int start, int length)
@@ -69,16 +69,68 @@ arrayString Substring(const arrayString & s, int start, int length)
 	return newString;
 }
 
-arrayString ReplaceString(arrayString& source, arrayString target, arrayString replaceText)
+void ReplaceString(arrayString& source, arrayString target, arrayString replaceText)
 {
+	arrayString newString = new char[1];
+	newString[0] = 0;
 
+	for (int i = 0; i < Length(source); i++)
+	{
+		for (int j = 0; j < Length(target); j++)
+		{
+			if (source[i + j] != target[j])
+			{
+				Append(newString, source[i]);
+				break;
+			}
+
+			for (int k = 0; k < Length(replaceText); k++)
+			{
+				Append(newString, replaceText[k]);
+			}
+
+			i += Length(target);
+		}
+	}
+
+	delete[] source;
+	source = newString;
 }
 
+void ReplaceTester()
+{
+	arrayString source = new char[9];
+	source[0] = 'a';
+	source[1] = 'b';
+	source[2] = 'c';
+	source[3] = 'd';
+	source[4] = 'a';
+	source[5] = 'b';
+	source[6] = 'e';
+	source[7] = 'e';
+	source[8] = 0;
 
+	arrayString target = new char[3];
+	target[0] = 'a';
+	target[1] = 'b';
+	target[2] = 0;
+
+	arrayString replaceText = new char[4];
+	replaceText[0] = 'x';
+	replaceText[1] = 'y';
+	replaceText[2] = 'z';
+	replaceText[3] = 0;
+
+	std::cout << source << std::endl;
+	
+	ReplaceString(source, target, replaceText);
+
+	std::cout << source << std::endl;
+}
 
 int main()
 {
-
+	ReplaceTester();
 
 	std::cin.get();
 
