@@ -1,6 +1,6 @@
 // "Problem: Class Roster", page 118
 
-#include "problem1.h"
+#include "studentRecord.h"
 
 studentRecord::studentRecord()
 {

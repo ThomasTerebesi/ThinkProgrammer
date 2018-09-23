@@ -1,8 +1,13 @@
-#include "problem2.h"
+#include "studentCollection.h"
 
 studentCollection::studentCollection()
 {
 	_listHead = nullptr;
+}
+
+studentCollection::studentCollection(const studentCollection & original)
+{
+	_listHead = CopiedList(original._listHead);
 }
 
 studentCollection::~studentCollection()
@@ -65,6 +70,17 @@ void studentCollection::PrintRecords()
 	}
 }
 
+studentCollection & studentCollection::operator=(const studentCollection & rhs)
+{
+	if (this != &rhs)
+	{
+		DeleteList(_listHead);
+		_listHead = CopiedList(rhs._listHead);
+	}
+
+	return *this;
+}
+
 void studentCollection::DeleteList(studentList & listPtr)
 {
 	while (listPtr != nullptr)
@@ -73,4 +89,29 @@ void studentCollection::DeleteList(studentList & listPtr)
 		listPtr = listPtr->next;
 		delete temp;
 	}
+}
+
+studentCollection::studentList studentCollection::CopiedList(const studentList original)
+{
+	if (original == nullptr)
+		return nullptr;
+
+	studentList newList = new studentNode;
+
+	newList->studentData = original->studentData;
+	
+	studentNode * oldLoopPtr = original->next;
+	studentNode * newLoopPtr = newList;
+
+	while (oldLoopPtr != nullptr)
+	{
+		newLoopPtr->next = new studentNode;
+		newLoopPtr = newLoopPtr->next;
+		newLoopPtr->studentData = oldLoopPtr->studentData;
+		oldLoopPtr = oldLoopPtr->next;
+	}
+
+	newLoopPtr->next = nullptr;
+
+	return newList;
 }

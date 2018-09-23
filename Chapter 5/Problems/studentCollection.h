@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "problem1.h"
+#include "studentRecord.h"
 
 class studentCollection
 {
@@ -15,6 +15,7 @@ private:
 
 public:
 	studentCollection();
+	studentCollection(const studentCollection & original);
 	~studentCollection();
 
 	void AddRecord(studentRecord newStudent);
@@ -23,9 +24,12 @@ public:
 
 	void PrintRecords();
 
+	studentCollection & operator=(const studentCollection & rhs);
+
 private:
 	typedef studentNode * studentList;
 	studentList _listHead;
 
 	void DeleteList(studentList &listPtr);
+	studentList CopiedList(const studentList original);
 };

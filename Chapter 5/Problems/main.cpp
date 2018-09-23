@@ -1,4 +1,8 @@
-#include "problem2.h"
+// "Problem: Class Roster", page 118
+// "Problem: Tracking an Unknown Quantity of Student Records", page 126
+
+
+#include "studentCollection.h"
 
 int main()
 {

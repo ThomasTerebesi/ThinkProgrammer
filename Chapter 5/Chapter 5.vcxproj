@@ -116,12 +116,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Problems\main.cpp" />
-    <ClCompile Include="Problems\problem1.cpp" />
-    <ClCompile Include="Problems\problem1.h" />
-    <ClCompile Include="Problems\problem2.cpp" />
+    <ClCompile Include="Problems\studentRecord.cpp" />
+    <ClCompile Include="Problems\studentRecord.h" />
+    <ClCompile Include="Problems\studentCollection.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Problems\problem2.h" />
+    <ClInclude Include="Problems\studentCollection.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
