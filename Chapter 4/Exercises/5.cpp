@@ -33,9 +33,10 @@ double AverageRecord(studentCollection sc)
 	double sum = 0;
 	listNode * loopPtr = sc;
 
+	std::cout << "Values in studentCollection: ";
 	while (loopPtr != nullptr)
 	{
-		std::cout << loopPtr->grade << "\t";
+		std::cout << loopPtr->grade << "   ";
 		sum += loopPtr->grade;
 		count++;
 		loopPtr = loopPtr->next;
@@ -96,13 +97,15 @@ int main()
 
 	double average = AverageRecord(sc);
 
-	std::cout << average << std::endl;
+	std::cout << "Average: " << average << std::endl;
 
 	RemoveRecord(sc, 1);
 
+	std::cout << std::endl;
+
 	average = AverageRecord(sc);
 
-	std::cout << average << std::endl;
+	std::cout << "Average: " << average << std::endl;
 
 	std::cin.get();
 
