@@ -26,18 +26,18 @@ int main()
 	charNode * three = new charNode;
 	charNode * four = new charNode;
 
-	one->c = 't';
-	two->c = 'e';
-	three->c = 's';
-	four->c = 't';
+	one->c = 't';	// 0
+	two->c = 'e';	// 1
+	three->c = 's'; // 2
+	four->c = 't';	// 3
 
 	charNode * five = new charNode;
 	charNode * six = new charNode;
 	charNode * seven = new charNode;
 
-	five->c = 'e';
-	six->c = 'r';
-	seven->c = 's';
+	five->c = 'e';	// 4
+	six->c = 'r';	// 5
+	seven->c = 's'; // 6
 
 	string strOne = one;
 	strOne->next = two;
@@ -58,7 +58,7 @@ int main()
 	std::cout << "\nstrOne after Concatenate(strOne, strTwo):" << std::endl;
 	Output(strOne);
 
-	RemoveChars(strOne, 1, 2);
+	RemoveChars(strOne, 3, 3);
 	std::cout << "\nstrOne after RemoveChars(strOne, 3, 3):" << std::endl;
 	Output(strOne);
 
@@ -143,13 +143,13 @@ void Concatenate(string & str1, const string & str2)
 	strEnd->next = strBegin;
 }
 
-// needs refinement, but in principle it works
 void RemoveChars(string & str, int index, int number)
 {
 	charNode * loopPtr = str;
 	int counter = 0;
 
-	while (loopPtr->next != nullptr && counter != index)
+	// determine the first cut, including the charNode that loopPtr points to
+	while (loopPtr->next != nullptr && counter < index - 1)
 	{
 		loopPtr = loopPtr->next;
 		counter++;
@@ -157,19 +157,16 @@ void RemoveChars(string & str, int index, int number)
 
 	charNode * firstCut = loopPtr;
 
-	std::cout << firstCut->c << std::endl;
-
 	counter = 0;
 
-	while (loopPtr->next != nullptr && counter <= number)
+	// determine the second cut
+	while (loopPtr->next != nullptr && counter < number)
 	{
 		loopPtr = loopPtr->next;
 		counter++;
 	}
 
 	charNode * secondCut = loopPtr;
-
-	std::cout << secondCut->c << std::endl;
 
 	firstCut->next = secondCut->next;
 }
