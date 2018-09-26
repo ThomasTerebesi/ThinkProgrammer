@@ -17,6 +17,7 @@ void Output(const string & str);
 void Append(string & str, char c);
 char CharacterAt(const string & str, int n);
 void Concatenate(string & str1, const string & str2);
+void RemoveChars(string & str, int index1, int index2);
 
 int main()
 {
@@ -55,6 +56,10 @@ int main()
 	Concatenate(strOne, strTwo);
 
 	std::cout << "\nstrOne after Concatenate(strOne, strTwo):" << std::endl;
+	Output(strOne);
+
+	RemoveChars(strOne, 1, 2);
+	std::cout << "\nstrOne after RemoveChars(strOne, 3, 3):" << std::endl;
 	Output(strOne);
 
 	std::cin.get();
@@ -117,7 +122,7 @@ void Concatenate(string & str1, const string & str2)
 	loopPtr = str2;
 	charNode * previousPtr = nullptr;
 	charNode * strBegin = nullptr;
-	
+
 	while (loopPtr != nullptr)
 	{
 		charNode * newNode = new charNode;
@@ -136,4 +141,35 @@ void Concatenate(string & str1, const string & str2)
 
 	// bring the two strings together
 	strEnd->next = strBegin;
+}
+
+// needs refinement, but in principle it works
+void RemoveChars(string & str, int index, int number)
+{
+	charNode * loopPtr = str;
+	int counter = 0;
+
+	while (loopPtr->next != nullptr && counter != index)
+	{
+		loopPtr = loopPtr->next;
+		counter++;
+	}
+
+	charNode * firstCut = loopPtr;
+
+	std::cout << firstCut->c << std::endl;
+
+	counter = 0;
+
+	while (loopPtr->next != nullptr && counter <= number)
+	{
+		loopPtr = loopPtr->next;
+		counter++;
+	}
+
+	charNode * secondCut = loopPtr;
+
+	std::cout << secondCut->c << std::endl;
+
+	firstCut->next = secondCut->next;
 }
