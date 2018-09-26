@@ -16,6 +16,9 @@ public:
 	void SetModelName(std::string moName);
 	std::string GetModelName();
 
+	std::string GetDescription();
+	int GetAgeInYears(int year = 2018);
+
 private:
 	int _modelYear;
 	std::string _manufacturerName;
@@ -24,15 +27,9 @@ private:
 
 int main()
 {
-	Automobile myCar(1956, "Chevrolet", "Impala");
+	Automobile myCar(1957, "Chevrolet", "Impala");
 
-	std::cout << myCar.GetModelYear() << " " << myCar.GetManufacturerName() << " " << myCar.GetModelName() << std::endl;
-
-	std::cout << "\nWhoops, that's the wrong model year!" << std::endl;
-
-	myCar.SetModelYear(1957);
-
-	std::cout << "\n" << myCar.GetModelYear() << " " << myCar.GetManufacturerName() << " " << myCar.GetModelName() << std::endl;
+	std::cout << "This " << myCar.GetDescription() <<  " is " << myCar.GetAgeInYears() << " years old." << std::endl;
 
 	std::cin.get();
 
@@ -77,4 +74,14 @@ void Automobile::SetModelName(std::string moName)
 std::string Automobile::GetModelName()
 {
 	return _modelName;
+}
+
+std::string Automobile::GetDescription()
+{
+	return std::to_string(GetModelYear()) + " " + GetManufacturerName() + " " + GetModelName();
+}
+
+int Automobile::GetAgeInYears(int year)
+{
+	return year - _modelYear;
 }
