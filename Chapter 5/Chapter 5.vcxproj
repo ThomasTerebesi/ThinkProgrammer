@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Exercises\4.cpp" />
+    <ClCompile Include="Exercises\5.cpp" />
     <ClCompile Include="Exercises\string.cpp" />
   </ItemGroup>
   <ItemGroup>

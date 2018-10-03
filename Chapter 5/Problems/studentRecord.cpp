@@ -26,7 +26,7 @@ void studentRecord::SetGrade(int newGrade)
 	if (IsValidGrade(newGrade))
 		_grade = newGrade;
 	else
-		std::cout << "SetGrade(): Invalid grade." << std::endl;
+		std::cout << "studentRecord::SetGrade(): Invalid grade." << std::endl;
 }
 
 int studentRecord::GetStudentID()
@@ -54,7 +54,7 @@ void studentRecord::SetName(std::string newName)
 std::string studentRecord::LetterGrade()
 {
 	if (!IsValidGrade(_grade))
-		return "LetterGrade(): Invalid grade.";
+		return "studentRecord::LetterGrade(): Invalid grade.";
 
 	const int NUMBER_CATEGORIES = 11;
 	const std::string GRADE_LETTER[] = { "F", "D", "D+", "C-", "C", "C+", "B-", "B", "B+", "A-", "A" };

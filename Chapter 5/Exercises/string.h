@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-#include <cstring>
 
 class String
 {
@@ -18,6 +17,7 @@ public:
 	void Concatenate(const String& string);
 	void Concatenate(const char* charString);
 	char CharacterAt(int position);
+	void Remove(int start, int n);
 
 	char& operator[](int position);
 
