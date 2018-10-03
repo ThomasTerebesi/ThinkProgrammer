@@ -12,10 +12,9 @@ int main()
 
 	one.Append('!');
 
-	std::cout << one << one.CharacterAt(11) << std::endl;
+	std::cout << one << one.CharacterAt(11) << one[11] << std::endl;
 
 	std::cin.get();
 
 	return 0;
 }
-

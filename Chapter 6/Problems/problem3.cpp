@@ -1,4 +1,4 @@
-// "Problem: Find the Largest Value in a Binary Tree"
+// "Problem: Find the Largest Value in a Binary Tree", page 162
 
 #include <iostream>
 
