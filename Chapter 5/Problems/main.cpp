@@ -6,23 +6,24 @@
 
 int main()
 {
-	studentCollection s;
+	StudentCollection stuCollection;
 
-	studentRecord stu3(84, 1152, "Sue");
-	studentRecord stu2(75, 4875, "Ed");
-	studentRecord stu1(98, 2938, "Todd");
+	StudentRecord stu3(84, 1152, "Sue");
+	StudentRecord stu2(75, 4875, "Ed");
+	StudentRecord stu1(98, 2938, "Todd");
 
-	s.AddRecord(stu3);
-	s.AddRecord(stu2);
-	s.AddRecord(stu1);
+	stuCollection.AddRecord(stu3);
+	stuCollection.AddRecord(stu2);
+	stuCollection.AddRecord(stu1);
 
-	s.PrintRecords();
+	std::cout << "stuCollection:" << std::endl;
+	stuCollection.PrintRecords();
 
-	s.RemoveRecord(4875);
+	stuCollection.RemoveRecord(4875);
 
 	std::cout << "\nAfter using 'RemoveRecord(4875)':" << std::endl;
 	
-	s.PrintRecords();
+	stuCollection.PrintRecords();
 
 	std::cin.get();
 

@@ -70,6 +70,30 @@ void StudentCollection::PrintRecords()
 	}
 }
 
+StudentCollection StudentCollection::RecordsWithinRange(int min, int max)
+{
+	StudentCollection newStudentCollection;
+	StudentNode * loopPtr = _listHead;
+
+	while (loopPtr != nullptr)
+	{
+		if (loopPtr->studentData.GetGrade() >= min && loopPtr->studentData.GetGrade() <= max)
+		{
+			StudentRecord newStudentRecord;
+
+			newStudentRecord.SetGrade(loopPtr->studentData.GetGrade());
+			newStudentRecord.SetName(loopPtr->studentData.GetName());
+			newStudentRecord.SetStudentID(loopPtr->studentData.GetStudentID());
+
+			newStudentCollection.AddRecord(newStudentRecord);
+		}
+
+		loopPtr = loopPtr->next;
+	}
+
+	return newStudentCollection;
+}
+
 StudentCollection & StudentCollection::operator=(const StudentCollection & rhs)
 {
 	if (this != &rhs)

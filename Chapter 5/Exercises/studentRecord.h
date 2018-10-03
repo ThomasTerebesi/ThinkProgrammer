@@ -1,5 +1,3 @@
-// "Problem: Class Roster", page 118
-
 #pragma once
 
 #include <iostream>

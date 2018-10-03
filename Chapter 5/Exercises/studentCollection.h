@@ -1,5 +1,3 @@
-// "Problem: Tracking an Unknown Quantity of Student Records", page 126
-
 #pragma once
 
 #include "studentRecord.h"
@@ -23,6 +21,8 @@ public:
 	void RemoveRecord(int idNum);
 
 	void PrintRecords();
+
+	StudentCollection RecordsWithinRange(int min, int max);
 
 	StudentCollection & operator=(const StudentCollection & rhs);
 
