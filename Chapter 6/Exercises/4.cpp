@@ -24,6 +24,9 @@ void PrintReverse(char charArray[], int size)
 	if (size == 0)
 		return;
 
-	std::cout << charArray[size - 1];
+	// TODO: Not very efficient.
+	if (charArray[size - 1] != 0)
+		std::cout << charArray[size - 1];
+	
 	PrintReverse(charArray, size - 1);
 }
