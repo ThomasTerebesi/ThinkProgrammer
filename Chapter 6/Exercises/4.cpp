@@ -12,6 +12,8 @@ int main()
 
 	PrintReverse(helloWorld, STRING_SIZE);
 
+	std::cout << std::endl;
+
 	std::cin.get();
 
 	return 0;
@@ -19,4 +21,9 @@ int main()
 
 void PrintReverse(char charArray[], int size)
 {
+	if (size == 0)
+		return;
+
+	std::cout << charArray[size - 1];
+	PrintReverse(charArray, size - 1);
 }
