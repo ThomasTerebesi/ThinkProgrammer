@@ -7,6 +7,8 @@ class BinaryTree
 public:
 	BinaryTree();
 
+	~BinaryTree();
+
 	int CountLeaves();
 private:
 	struct BinaryTreeNode
@@ -47,6 +49,11 @@ BinaryTree::BinaryTree()
 	_root->right = nullptr;
 }
 
+BinaryTree::~BinaryTree()
+{
+	delete _root;
+}
+
 int BinaryTree::CountLeaves()
 {
 	return PrivateCountLeaves(_root);
@@ -57,7 +64,7 @@ int BinaryTree::PrivateCountLeaves(TreePtr rootPtr)
 	if (rootPtr == nullptr)
 		return 0;
 
-	if (rootPtr->left == nullptr && rootPtr->left == nullptr)
+	if (rootPtr->left == nullptr && rootPtr->right == nullptr)
 		return 1;
 
 	int leftCount = PrivateCountLeaves(rootPtr->left);
